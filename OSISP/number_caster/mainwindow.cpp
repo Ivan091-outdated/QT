@@ -73,13 +73,15 @@ void MainWindow::createItem(int base)
     connect(textArea, &QTextEdit::textChanged, parent, [this, textArea, spinBox](){
         auto string = textArea->toPlainText();
         if (string.isEmpty()){
+            textArea->blockSignals(true);
             setNum(min);
+            textArea->blockSignals(false);
         }
         bool isOK = false;
         auto value = string.toULongLong(&isOK, spinBox->value());
         if (isOK){
             textArea->blockSignals(true);
-            this->setNum(value);
+            setNum(value);
             textArea->blockSignals(false);
         } else {
             textArea->undo();
