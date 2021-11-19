@@ -39,7 +39,6 @@ void MainWindow::createItem(int base)
 {
     auto parent = new QWidget;
     parent->setLayout(new QHBoxLayout);
-    parent->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
 
     auto spinBox = new QSpinBox(parent);
     auto textArea = new QTextEdit(parent);
