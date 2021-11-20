@@ -79,10 +79,26 @@ void MainWindow::fillTableRandomly()
     auto rand = QRandomGenerator::securelySeeded();
     for (auto i = 0; i < heigth; i++){
         for (auto j = 0; j < width; j++){
-            ui->tableWidget->item(i, j)->setData(0, rand.bounded(1, 99));
+            ui->tableWidget->item(i, j)->setData(0, rand.bounded(ui->spinBoxLow->value(), ui->spinBoxHigh->value()));
         }
     }
 }
 
 
+
+
+void MainWindow::on_spinBoxHigh_valueChanged(int arg1)
+{
+    if (arg1 <= ui->spinBoxLow->value()){
+        ui->spinBoxHigh->setValue(arg1 + 1);
+    }
+}
+
+
+void MainWindow::on_spinBoxLow_valueChanged(int arg1)
+{
+    if (arg1 >= ui->spinBoxHigh->value()){
+        ui->spinBoxLow->setValue(arg1 - 1);
+    }
+}
 
