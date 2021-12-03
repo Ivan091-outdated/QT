@@ -30,5 +30,7 @@ private:
 
 private slots:
     void fillTableRandomly();
+    void on_spinBoxHigh_valueChanged(int arg1);
+    void on_spinBoxLow_valueChanged(int arg1);
 };
 #endif // MAINWINDOW_H
