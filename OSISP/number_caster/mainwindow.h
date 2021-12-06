@@ -26,8 +26,6 @@ private:
     Ui::MainWindow *ui;
     void createItem(int base);
     QString currentNumToString(quint64 base);
-    QString numToString(quint64 num, int base);
-
 
     quint64 currentNum;
     quint64 min = 0;

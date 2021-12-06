@@ -7,6 +7,7 @@
 #include <QSpinBox>
 #include <QString>
 #include <QTextEdit>
+#include "num_lib.h"
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -37,28 +38,18 @@ void MainWindow::setNum(quint64 num)
 
 void MainWindow::createItem(int base)
 {
-    auto parent = new QWidget;
-    parent->setLayout(new QHBoxLayout);
-
-    auto spinBox = new QSpinBox(parent);
-    auto textArea = new QTextEdit(parent);
-    auto closeButton = new QPushButton(parent);
+    auto parent = createParentWidget(this);
+    auto spinBox = createSpinBox(base, parent);
+    auto textArea = createTextArea(parent);
+    auto closeButton = createDeleteButton(parent);
 
     parent->layout()->addWidget(spinBox);
     parent->layout()->addWidget(textArea);
     parent->layout()->addWidget(closeButton);
     ui->verticalLayout->addWidget(parent);
 
-    spinBox->setValue(base);
-    spinBox->setMinimum(2);
-    spinBox->setMaximum(16);
-    spinBox->setMinimumSize(100, 100);
-
-    auto font = textArea->font();
-    font.setPointSize(30);
-    font.setFamily("Consolas");
-    textArea->setFont(font);
-    spinBox->setFont(font);
+    textArea->setFont(createFont());
+    spinBox->setFont(createFont());
 
     auto setTextLambda = [this, textArea, spinBox](){
         textArea->setText(currentNumToString(spinBox->value()));
@@ -97,11 +88,6 @@ void MainWindow::createItem(int base)
 QString MainWindow::currentNumToString(quint64 base)
 {
     return numToString(currentNum, base);
-}
-
-QString MainWindow::numToString(quint64 num, int base)
-{
-    return QString::number(num, base).toUpper();
 }
 
 
