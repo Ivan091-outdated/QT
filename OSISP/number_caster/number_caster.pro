@@ -23,9 +23,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-num_lib-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/release/ -lnum_lib
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-num_lib-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/debug/ -lnum_lib
-else:unix: LIBS += -L$$PWD/../build-num_lib-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/ -lnum_lib
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../lib/ -lnum_lib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../lib/ -lnum_lib
+else:unix: LIBS += -L$$PWD/../lib/ -lnum_lib
 
 INCLUDEPATH += $$PWD/../num_lib
 DEPENDPATH += $$PWD/../num_lib

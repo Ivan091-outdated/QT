@@ -10,7 +10,7 @@ QString numToString(quint64 num, int base)
 
 QPushButton* createDeleteButton(QWidget* parent)
 {
-    return new QPushButton(parent);
+    return new QPushButton("Remove", parent);
 }
 
 QSpinBox* createSpinBox(int initValue, QWidget *parent)
@@ -18,7 +18,7 @@ QSpinBox* createSpinBox(int initValue, QWidget *parent)
     auto spinbox = new QSpinBox(parent);
     spinbox->setValue(initValue);
     spinbox->setMinimum(2);
-    spinbox->setMaximum(16);
+    spinbox->setMaximum(30);
     spinbox->setMinimumSize(100, 100);
     return spinbox;
 }
@@ -39,6 +39,6 @@ QFont createFont()
 {
     QFont font;
     font.setPointSize(30);
-    font.setFamily("Consolas");
+    font.setFamily("Arial");
     return font;
 }
